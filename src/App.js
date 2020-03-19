@@ -3,6 +3,7 @@ import './App.css';
 import Page from './components/Page';
 import Nav from './components/Nav';
 import SignIn from './components/SignIn';
+import Profile from './components/Profile';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { withRouter } from "react-router";
 import 'antd/dist/antd.css';
@@ -13,6 +14,7 @@ function App() {
       <div>
         <Route exact path={"/login"} component={withRouter(SignIn)} />
         <Route exact path={"/home"} component={withRouter(Page)} />
+        <Route exact path={"/profile"} component={withRouter(Profile)} />
       </div>
       </Router>
   );

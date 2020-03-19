@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import GitHubLogin from 'react-github-login';
-import { GithubLoginButton } from "react-social-login-buttons";
 import { GoogleLogin } from 'react-google-login';
+import {Card} from 'antd';
 
 export default class SignIn extends Component {
 
@@ -14,7 +13,8 @@ export default class SignIn extends Component {
 
   render() {
     return (
-      <div style={{alignItems:'center'}}>
+      <div style={{marginLeft : '30%', marginRight : '30%', marginTop : '20%', textAlign : 'center'}}>
+        {/* <Card style={{marginLeft : '30%', marginRight : '30%', marginTop : '20%', textAlign : 'center'}}> */}
         <GoogleLogin
           clientId="799554132875-eeio89ohmbec9i7krc7psu5vc509t3v1.apps.googleusercontent.com"
           buttonText="Login"
@@ -22,6 +22,7 @@ export default class SignIn extends Component {
           onFailure={this.onFailure}
           cookiePolicy={'single_host_origin'}
         />
+        {/* </Card> */}
       </div>
     )
   }

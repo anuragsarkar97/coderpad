@@ -1,8 +1,6 @@
 import React, {
     Component
 } from 'react'
-
-import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import MonacoEditor from 'react-monaco-editor';
 import {
@@ -12,6 +10,8 @@ import {
     BackTop,
     Rate,
     Card,
+    Collapse,
+    notification
 } from 'antd';
 import {HeartTwoTone, BookOutlined, EditOutlined, EllipsisOutlined, SettingOutlined, QuestionOutlined, BookFilled } from '@ant-design/icons';
 import Tags from '../components/Tags';
@@ -30,7 +30,8 @@ export default class Paper extends Component {
             visibleB: false,
             selectOnLineNumbers: true,
             selectedLanguage: "python",
-            marked: false
+            marked: false,
+            innerdrawerview: false
         }
     }
 
@@ -74,10 +75,39 @@ export default class Paper extends Component {
         this.setState({marked : !this.state.marked});
     }
 
+    onCloseInner = () => {
+        this.setState({innerdrawerview : false});
+    }
+
+    showoutput = () => {
+        this.openExecutionNotification("info");
+        setTimeout(this.openRunnerNotification("success"),
+            2000
+        );
+    }
+
+    openExecutionNotification = type => {
+        notification[type]({
+          message: 'Code Execution',
+          description:'Execution queued !',
+          placement: 'bottomLeft',
+        });
+      };
+
+      openRunnerNotification = type => {
+        notification[type]({
+            message: 'Code Execution',
+            description:'Execution queued !',
+            placement: 'bottomLeft',
+          });
+      }
+      
+
 
     render() {
 
         let v = this.props.question;
+        const { Panel } = Collapse;
 
         let menu = ( <Menu onClick = {this.handleMenuClick}>
             <Menu.Item >python</Menu.Item> 
@@ -85,7 +115,6 @@ export default class Paper extends Component {
             <Menu.Item>cpp</Menu.Item > 
             </Menu >
             );
-
 
 
             return ( 
@@ -126,15 +155,22 @@ export default class Paper extends Component {
                             <Dropdown overlay = {menu}>
                             <Button style = {{leftMargin: '5%'}}> {this.state.selectedLanguage} </Button>
                             </Dropdown> 
-                            <Button onClick = {() => {alert("clicked")}} > Submit </Button>  
+                            <Button onClick = {this.showoutput} > Submit </Button>  
                             </div>}> 
+                            <br></br>
+                            <Collapse accordion>
+                                <Panel header="Console Output" key="1">
+                                    <p>haha</p>
+                                </Panel>
+                            </Collapse>
+                            <br></br>
                             <MonacoEditor 
                                 language = {this.state.selectedLanguage}
                                 theme = "vs-light"
                                 value = {this.state.code}
                                 options = {this.state.options}
                                 onChange = {this.onChange}
-                                editorDidMount = {this.editorDidMount} />   
+                                editorDidMount = {this.editorDidMount} />  
                         </Drawer> 
                 </Card> 
             </div>

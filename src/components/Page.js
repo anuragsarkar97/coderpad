@@ -14,14 +14,14 @@ const t = [
   {
     company_name : "bloomberg",
     question_tag : ["2 pointer", "dp"],
-    question_difficulty : "hard",
+    question_difficulty : "easy",
     question_base : "find the smallest set ",
     full_question : "some markdown content will be available here .... "
   },
   {
     company_name : "google",
     question_tag : ["matrix", "dfs"],
-    question_difficulty : "hard",
+    question_difficulty : "medium",
     question_base : "find islands ",
     full_question : "some markdown content will be available here .... "
   },
@@ -42,7 +42,6 @@ export default class Page extends Component {
   };
 
   componentDidMount() {
-    message.info('Logged In Successfully 😀', 1);
     setTimeout(() => {
       this.setState({ loading: false });
     }, 300);
