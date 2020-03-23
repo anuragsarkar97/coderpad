@@ -81,9 +81,6 @@ export default class Paper extends Component {
 
     showoutput = () => {
         this.openExecutionNotification("info");
-        setTimeout(this.openRunnerNotification("success"),
-            2000
-        );
     }
 
     openExecutionNotification = type => {
@@ -93,15 +90,6 @@ export default class Paper extends Component {
           placement: 'bottomLeft',
         });
       };
-
-      openRunnerNotification = type => {
-        notification[type]({
-            message: 'Code Execution',
-            description:'Execution queued !',
-            placement: 'bottomLeft',
-          });
-      }
-      
 
 
     render() {
