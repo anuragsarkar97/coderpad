@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Mongo URL :mongodb+srv://admin:iloveindia@cluster0-stl0c.mongodb.net/test?retryWrites=true&w=majority
 ## Available Scripts
 
 In the project directory, you can run:
