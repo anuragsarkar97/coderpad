@@ -1,4 +1,3 @@
-
 const express = require('express');
 const properties = require('./config/properties');
  const db = require('./config/database');
@@ -17,8 +16,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api',apiRoutes);
-
+// app.use(cors());
 
 app.listen(properties.PORT, (req, res) => {
     console.log(`Server is running on ${properties.PORT} port.`);
 });
+
