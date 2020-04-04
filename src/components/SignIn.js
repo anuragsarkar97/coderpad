@@ -17,7 +17,7 @@ export default class SignIn extends Component {
       console.log(error);
       this.props.history.push("/login");
     });
-  }
+  };
   onFailure = response => console.error("error", response);
 
   render() {

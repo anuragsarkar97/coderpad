@@ -64,8 +64,9 @@ export default class Page extends Component {
     this.state.q.map((item, index) => {
       rows.push(<Col key={index} span={8}>
           <Paper question={item} />
-          </Col>); 
-    })
+          </Col>);
+
+    });
     return rows;
   }
 

@@ -17,7 +17,7 @@ class Nav extends Component {
   componentDidMount() {
     axios({method:'GET', url: 'localhost:3005/auth?accessToken=' + localStorage.getItem('token'),})
     .then(function (response) {
-      if(window.location.pathname == "/login") {
+      if(window.location.pathname === "/login") {
         this.props.history.push("/home");
       } else {
         this.props.history.push(window.location.pathname);
@@ -61,7 +61,7 @@ class Nav extends Component {
           </Col>
           <Col span={8}>
             <div style={{textAlign : 'center'}}>
-              {window.location.pathname == "/home" ? 
+              {window.location.pathname === "/home" ?
               <AutoComplete
               options={options}
               style={{ width: 400, marginTop: '2%', marginBottom : '2%' }}
@@ -74,7 +74,7 @@ class Nav extends Component {
           </Col>
           <Col span={8}> 
             <div style={{textAlign : 'right'}}>
-              {window.location.pathname != "/login"  ?
+              {window.location.pathname !== "/login"  ?
               <Avatar style={{ backgroundColor: '#87d068', marginRight : '10%' }} icon={<UserOutlined />} onClick={this.redirectUser} /> : null
               }
             </div>
