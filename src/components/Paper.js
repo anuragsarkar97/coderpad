@@ -13,8 +13,7 @@ import {
     Collapse,
     notification
 } from 'antd';
-import {HeartTwoTone, BookOutlined, EditOutlined, EllipsisOutlined, SettingOutlined, QuestionOutlined, BookFilled } from '@ant-design/icons';
-import Tags from '../components/Tags';
+import {EditOutlined,QuestionOutlined } from '@ant-design/icons';
 
 
 export default class Paper extends Component {

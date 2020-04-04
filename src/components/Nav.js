@@ -5,20 +5,27 @@ import {
   UserOutlined
 } from '@ant-design/icons';
 import {withRouter} from 'react-router-dom';
+const axios = require('axios').default;
+
 
 class Nav extends Component {
 
+  constructor(props){
+    super(props);
+  }
+
   componentDidMount() {
-      let p = localStorage.getItem("token")
-      if(p == null || !this.valid(p)) {
-          this.props.history.push("/login");
+    debugger;
+    axios({method:'GET', url: 'localhost:3005/auth?accessToken=' + localStorage.getItem('token'),})
+    .then(function (response) {
+      if(window.location.pathname == "/login") {
+        this.props.history.push("/home");
       } else {
-        if(window.location.pathname == "/login") {
-          this.props.history.push("/home");
-        } else {
-          this.props.history.push(window.location.pathname);
-        }
+        this.props.history.push(window.location.pathname);
       }
+    }).catch(function(response){
+      // this.props.history.push("/login")
+    })
     }
 
     valid = (token) => {

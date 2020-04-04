@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Paper from '../components/Paper.js';
 import { Row, Col, Skeleton, message } from 'antd';
-
+const axios = require('axios').default;
 
 const t = [
   {
@@ -37,23 +37,33 @@ const t = [
 
 export default class Page extends Component {
 
-  state = {
-    loading: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      q : t,
+    };
+  }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ loading: false });
-    }, 300);
+    console.log("sfsdf")
+    axios({
+      method: 'get',
+      url: 'localhost:3005/question',
+    })
+      .then(function(response) {
+        this.setState({loading : false, q : response.data});
+    }).catch(function(response){
+      console.log("error doing api call")
+      // this.setState({q : t});
+    });
   }
 
   cards() {
     let rows = [];
-    t.map((item, index) => {
-      rows.push(<Col span={8}>
-        <Skeleton active loading={this.state.loading}>
+    this.state.q.map((item, index) => {
+      rows.push(<Col key={index} span={8}>
           <Paper question={item} />
-          </Skeleton>
           </Col>); 
     })
     return rows;
@@ -63,7 +73,9 @@ export default class Page extends Component {
     return (
       <div>
         <Row gutter={[10, 10]}>
+        <Skeleton active loading={this.state.loading}>
         {this.cards()}
+        </Skeleton>
         </Row>
       </div>
     )
