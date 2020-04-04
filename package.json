@@ -17,6 +17,8 @@
     "express": "^4.17.1",
     "history": "^4.10.1",
     "monaco-editor": "^0.20.0",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.7",
     "node-cache": "^5.1.0",
     "react": "^16.13.0",
     "react-ace": "^8.0.0",
@@ -29,10 +31,11 @@
     "react-scripts": "3.4.0",
     "react-social-login-buttons": "^3.0.0",
     "recharts": "^1.8.5",
-    "slate-editor": "^5.1.1"
+    "slate-editor": "^5.1.1",
+    "body-parser": "latest"
   },
   "scripts": {
-    "start": " concurrently \"react-scripts start\" \"node src/server/main.js\" ",
+    "start": " concurrently  \"node src/server/main.js\" \"react-scripts start\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
