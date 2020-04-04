@@ -11,7 +11,6 @@
     "@testing-library/user-event": "^7.1.2",
     "ace-builds": "^1.4.8",
     "antd": "^4.0.1",
-
     "axios": "^0.19.2",
     "evergreen-ui": "^4.23.0",
     "express": "^4.17.1",
@@ -30,10 +29,11 @@
     "react-scripts": "3.4.0",
     "react-social-login-buttons": "^3.0.0",
     "recharts": "^1.8.5",
-    "slate-editor": "^5.1.1"
+    "slate-editor": "^5.1.1",
+    "body-parser": "latest"
   },
   "scripts": {
-    "start": " concurrently \"react-scripts start\" \"node src/server/main.js\" ",
+    "start": " concurrently  \"node src/server/main.js\" \"react-scripts start\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

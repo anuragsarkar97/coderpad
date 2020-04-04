@@ -9,20 +9,19 @@ const bodyParser = require('body-parser');
 console.log("LOG...........................");
 try {
     db();
+    let e;
+    console.log(e+"MONGO DB CONNECTION SUCCESS")
 }
 catch (e) {
     console.log(e+"MONGO DB CONNECTION FAIL");
 }
 
 console.log("");
-app.listen(properties.PORT, (req, res) => {
-    console.log(`Server is running on ${properties.PORT} port.`);
+app.listen(3005, (req, res) => {
+    console.log(`Server is running on 3005 port.`);
 });
 
 
 
 
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(properties.PORT, () => console.log(`Example app listening at http://localhost:${properties.PORT}`));
 
