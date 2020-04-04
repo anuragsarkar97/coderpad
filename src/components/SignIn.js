@@ -3,11 +3,11 @@ import { GoogleLogin } from 'react-google-login';
 const axios = require('axios').default;
 export default class SignIn extends Component {
   onSuccess = response => {
-    axios.post('/login', {
+    axios({method:'POST', url:'/login', data:{
       accessToken: response.accessToken,
       profile: response.profileObj,
       tokenId: response.tokenId,
-    })
+    }})
     .then(function (response) {
       console.log("success", response);
       localStorage.setItem("token", response.accessToken);

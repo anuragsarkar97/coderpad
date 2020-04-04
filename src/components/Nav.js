@@ -10,10 +10,13 @@ const axios = require('axios').default;
 
 class Nav extends Component {
 
+  constructor(props){
+    super(props);
+  }
+
   componentDidMount() {
-    axios.get('/auth', {
-      accessToken: localStorage.getItem('token'),
-    })
+    debugger;
+    axios({method:'GET', url: 'localhost:3005/auth?accessToken=' + localStorage.getItem('token'),})
     .then(function (response) {
       if(window.location.pathname == "/login") {
         this.props.history.push("/home");
@@ -21,7 +24,7 @@ class Nav extends Component {
         this.props.history.push(window.location.pathname);
       }
     }).catch(function(response){
-      this.props.history.push("/login")
+      // this.props.history.push("/login")
     })
     }
 
