@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import {Card} from 'antd';
-
+const axios = require('axios').default;
 export default class SignIn extends Component {
-
   onSuccess = response => {
-    console.log("success", response);
-    localStorage.setItem("token", response.accessToken);
-    this.props.history.push("/home");
+    axios.post('/login', {
+      accessToken: response.accessToken,
+      profile: response.profileObj,
+      tokenId: response.tokenId,
+    })
+    .then(function (response) {
+      console.log("success", response);
+      localStorage.setItem("token", response.accessToken);
+      this.props.history.push("/home");
+    })
+    .catch(function (error) {
+      console.log(error);
+      this.props.history.push("/login");
+    });
   }
   onFailure = response => console.error("error", response);
 
