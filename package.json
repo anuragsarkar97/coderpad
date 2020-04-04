@@ -12,6 +12,7 @@
     "ace-builds": "^1.4.8",
     "antd": "^4.0.1",
     "evergreen-ui": "^4.23.0",
+    "express": "^4.17.1",
     "monaco-editor": "^0.20.0",
     "react": "^16.13.0",
     "react-ace": "^8.0.0",
@@ -27,7 +28,7 @@
     "slate-editor": "^5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": " concurrently \"react-scripts start\" \"node src/server/main.js\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -46,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
   }
 }
