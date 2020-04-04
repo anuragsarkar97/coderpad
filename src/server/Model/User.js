@@ -1,4 +1,5 @@
 const mongoose= require('mongoose');
+const Profile = require('./UserProfile');
 /*
 User DAO  {@link-> userSchema}
  */
@@ -12,7 +13,7 @@ const userSchema = mongoose.Schema({
         required:true,
     },
     profile:{
-        type: Object,
+        type: Profile,
 
     }
 });
