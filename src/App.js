@@ -4,12 +4,14 @@ import Page from './components/Page';
 import Nav from './components/Nav';
 import SignIn from './components/SignIn';
 import Profile from './components/Profile';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route,  BrowserRouter as Router } from 'react-router-dom';
 import { withRouter } from "react-router";
 import 'antd/dist/antd.css';
+
+
 function App() {
   return (
-    <Router>
+    <Router >
       <Nav />
       <div>
         <Route exact path={"/login"} component={withRouter(SignIn)} />

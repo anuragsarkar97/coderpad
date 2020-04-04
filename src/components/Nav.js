@@ -15,7 +15,6 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    debugger;
     axios({method:'GET', url: 'localhost:3005/auth?accessToken=' + localStorage.getItem('token'),})
     .then(function (response) {
       if(window.location.pathname == "/login") {

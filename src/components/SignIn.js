@@ -1,21 +1,36 @@
 import React, { Component } from 'react'
 import { GoogleLogin } from 'react-google-login';
-const axios = require('axios').default;
+import { history } from '../history';
 export default class SignIn extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
+
   onSuccess = response => {
-    axios({method:'POST', url:'localhost:3009/login', data:{
-      accessToken: response.accessToken,
-      profile: response.profileObj,
-      tokenId: response.tokenId,
-    }})
+    const z = response.accessToken;
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Credentials' : 'true' },
+      body: JSON.stringify({
+        accessToken: response.accessToken,
+        profile: response.profileObj,
+        tokenId: response.tokenId,
+      })
+  };
+  fetch('http://localhost:3005/login', requestOptions)
     .then(function (response) {
+      debugger;
       console.log("success", response);
-      localStorage.setItem("token", response.accessToken);
-      this.props.history.push("/home");
+      localStorage.setItem("token", z);
+      history.push("/home");
     })
     .catch(function (error) {
       console.log(error);
-      this.props.history.push("/login");
+      history.push("/login");
     });
   }
   onFailure = response => console.error("error", response);
