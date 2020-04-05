@@ -23,7 +23,6 @@ export default class SignIn extends Component {
   };
   fetch('http://localhost:3009/login', requestOptions)
     .then(function (response) {
-      debugger;
       console.log("success", response);
       localStorage.setItem("token", z);
       history.push("/home");
