@@ -14,6 +14,9 @@ if(!db)
     console.log("Error connecting db");
 else
     console.log("Db connected successfully");
+
+
+
 };
 // const MongoClient = require('mongodb').MongoClient;
 // const uri = require('./properties').DB;
