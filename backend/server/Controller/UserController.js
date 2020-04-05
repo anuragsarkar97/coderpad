@@ -1,15 +1,20 @@
 
 
 
-User= require('./Model/User');
-UserProfile=require('./Model/Profile');
+User= require('../Model/User.js');
+UserProfile=require('../Model/UserProfile.js');
 /*
+
 get all user details
  */
 exports.index= function (req,res) {
 User.get(function (err,users) {
-        if(err) throw err;
-        console.log(err);
+        if (err) {
+            res.json({
+                status: "error",
+                message: err,
+            });
+        }
         res.json({
             status:"success",
             message:"All User Details ",
