@@ -32,7 +32,7 @@ export default class SignIn extends Component {
       console.log(error);
       history.push("/login");
     });
-  }
+  };
   onFailure = response => console.error("error", response);
 
   render() {

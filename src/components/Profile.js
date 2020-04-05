@@ -39,34 +39,33 @@ export default class Profile extends Component {
         <br></br>
         <Row>
           <Col span={12}>
-            <div style={{marginLeft : '5%'}}>
-            <Card title="User Info" style={{ width: 600 }} >
-              <Descriptions title="Personal Details" bordered >
-                <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
-                <Descriptions.Item label="Email Address">example@example.com</Descriptions.Item>
-              </Descriptions>
-              <br></br>
+              <Card title="User Info" style={{ width: 600 }} >
+                  <Descriptions title="Personal Details" bordered >
+                      <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
+                      <Descriptions.Item label="Email Address">example@example.com</Descriptions.Item>
+                  </Descriptions>
+                  <br></br>
 
-              <Descriptions title="Code Feedback" / >
-              <AreaChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5, right: 5, left: 0, bottom: 0,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Area type="monotone" dataKey="ds" stackId="1" stroke="#a0d911" fill="#a0d911" />
-                <Area type="monotone" dataKey="algorithm" stackId="1" stroke="#1890ff" fill="#1890ff" />
-                <Area type="monotone" dataKey="confidence" stackId="1" stroke="#ffec3d" fill="#ffec3d" />
-              </AreaChart>
-              
-            </Card>
-            </div>
+                  <Descriptions title="Code Feedback" />
+                  <AreaChart
+                      width={500}
+                      height={300}
+                      data={data}
+                      margin={{
+                      top: 5, right: 5, left: 0, bottom: 0,
+                  }}
+                      >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Area type="monotone" dataKey="ds" stackId="1" stroke="#a0d911" fill="#a0d911" />
+                  <Area type="monotone" dataKey="algorithm" stackId="1" stroke="#1890ff" fill="#1890ff" />
+                  <Area type="monotone" dataKey="confidence" stackId="1" stroke="#ffec3d" fill="#ffec3d" />
+                  </AreaChart>
+              </Card>
+
+
           </Col>
           <Col>
             <Card title="Geek Stat" style={{ width: 600 }}>

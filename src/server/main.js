@@ -1,35 +1,24 @@
-var cors = require('cors')
-const port = 3005
 const express = require('express');
 const properties = require('./config/properties');
-const db = require('./config/database');
+ const db = require('./config/database');
 const app = express();
 const bodyParser = require('body-parser');
-// call the database connectivity function
+const apiRoutes=require('./Routes/api-routes');
 
-console.log("LOG...........................");
 try {
     db();
-    let e;
-    console.log(e+"MONGO DB CONNECTION SUCCESS")
 }
 catch (e) {
     console.log(e+"MONGO DB CONNECTION FAIL");
 }
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
-console.log("");
-app.listen(3005, (req, res) => {
-    console.log(`Server is running on 3005 port.`);
+app.use('/api',apiRoutes);
+// app.use(cors());
+
+app.listen(properties.PORT, (req, res) => {
+    console.log(`Server is running on ${properties.PORT} port.`);
 });
 
-
-
-
-
-app.post('/login', cors(), (req, res) => {
-  console.log(req.data);
-  res.send('Hello World!')
-})
-
-app.use(cors()) 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
