@@ -14,8 +14,9 @@ catch (e) {
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(bodyParser.json());
 
-app.use('/api',apiRoutes);
+app.use('/coderpad/v1',apiRoutes);
 // app.use(cors());
 
 app.listen(properties.PORT, (req, res) => {
