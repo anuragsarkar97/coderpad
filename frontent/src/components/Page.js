@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Paper from './Paper.js';
-import { Row, Col, Skeleton, message } from 'antd';
-const axios = require('axios').default;
+import { Row, Col } from 'antd';
 
 const t = [
   {
@@ -40,22 +39,26 @@ export default class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
       q : t,
     };
   }
 
   componentDidMount() {
-    console.log("sfsdf")
-    axios({
-      method: 'get',
-      url: 'localhost:3005/question',
+
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Credentials' : 'true',
+              'access_token' : localStorage.getItem('token') 
+            }
+  };
+  fetch('http://localhost:3005/question', requestOptions)
+    .then((res) => {
+      this.setState({q : res.json});
     })
-      .then(function(response) {
-        this.setState({loading : false, q : response.data});
-    }).catch(function(response){
-      console.log("error doing api call")
-      // this.setState({q : t});
+    .catch(() => {
+      console.log("error");
     });
   }
 
@@ -71,12 +74,11 @@ export default class Page extends Component {
   }
 
   render() {
+
     return (
       <div>
         <Row gutter={[10, 10]}>
-        <Skeleton active loading={this.state.loading}>
         {this.cards()}
-        </Skeleton>
         </Row>
       </div>
     )

@@ -1,35 +1,21 @@
 import React, { Component } from 'react'
 import { Menu, Affix, AutoComplete, Avatar, Row, Col } from 'antd';
 import {
-  CodeOutlined,
-  UserOutlined
+  CodeOutlined
 } from '@ant-design/icons';
 import {withRouter} from 'react-router-dom';
-const axios = require('axios').default;
-
 
 class Nav extends Component {
 
   constructor(props){
     super(props);
+    console.log(this);
   }
 
   componentDidMount() {
-    axios({method:'GET', url: 'localhost:3005/auth?accessToken=' + localStorage.getItem('token'),})
-    .then(function (response) {
-      if(window.location.pathname === "/login") {
-        this.props.history.push("/home");
-      } else {
-        this.props.history.push(window.location.pathname);
-      }
-    }).catch(function(response){
-      // this.props.history.push("/login")
-    })
+    
     }
 
-    valid = (token) => {
-      return true;
-    }
 
     redirectUser = () => {
       this.props.history.push("/profile");
@@ -42,9 +28,9 @@ class Nav extends Component {
   render() {
 
     const options = [
-      { value: 'Burns Bay Road' },
-      { value: 'Downing Street' },
-      { value: 'Wall Street' },
+      { value: 'easy and medium facebook questions' },
+      { value: 'hard google dp questions ' },
+      { value: 'linked list and trees ' },
     ];
   
     return (
@@ -75,7 +61,7 @@ class Nav extends Component {
           <Col span={8}> 
             <div style={{textAlign : 'right'}}>
               {window.location.pathname !== "/login"  ?
-              <Avatar style={{ backgroundColor: '#87d068', marginRight : '10%' }} icon={<UserOutlined />} onClick={this.redirectUser} /> : null
+              <Avatar style={{ backgroundColor: '#87d068', marginRight : '10%' }} src={window.localStorage.getItem("profile-photo")} onClick={this.redirectUser} /> : null
               }
             </div>
           </Col>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import { history } from '../history';
 export default class SignIn extends Component {
 
   constructor(props){
@@ -9,28 +8,31 @@ export default class SignIn extends Component {
 
 
   onSuccess = response => {
+    console.log(response);
     const z = response.accessToken;
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json',
     'Access-Control-Allow-Origin' : '*',
-      'Access-Control-Allow-Credentials' : 'true' },
+      'Access-Control-Allow-Credentials' : 'true',
+     'access_token' :  response.accessToken,
+     'token' : response.tokenId
+    },
       body: JSON.stringify({
-        accessToken: response.accessToken,
         profile: response.profileObj,
-        tokenId: response.tokenId,
       })
   };
-  fetch('http://localhost:3009/login', requestOptions)
-    .then(function (response) {
-      debugger;
+  localStorage.setItem("profile-photo", response.profileObj.imageUrl);
+  fetch('http://localhost:3005/login', requestOptions)
+    .then(() => {
       console.log("success", response);
       localStorage.setItem("token", z);
-      history.push("/home");
+      this.props.history.push("/home");
     })
-    .catch(function (error) {
-      console.log(error);
-      history.push("/login");
+    .catch(() => {
+      // console.log(error);
+      // this.props.history.push("/login");
+      this.props.history.push("/home");
     });
   };
   onFailure = response => console.error("error", response);
