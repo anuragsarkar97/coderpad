@@ -5,37 +5,42 @@ const Request = require("request");
 const cache = new NodeCache({ stdTTL: 5 * 60 });
 
 function getUrlFromRequest(req) {
-  const url = req.protocol + '://' + req.headers.host + req.originalUrl;
+  let url = req.protocol + '://' + req.headers.host + req.originalUrl;
   return url
 }
 
+function getBody(req) {
+    Request.get(getUrlFromRequest(req), (error, response, body) => {
+        if (error) {
+            return console.dir(error);
+        }
+        console.dir(JSON.parse(body));
+        return body;
+    });
+}
 
-Request.get("http://httpbin.org/ip", (error, response, body) => {
-    if(error) {
-        return console.dir(error);
-    }
-    console.dir(JSON.parse(body));
-});
-function jsonParser(stringValue) {
-
-       var string = JSON.stringify(stringValue);
-       var objectValue = JSON.parse(string);
-       return objectValue['mm'];
-    }
 function set(req, res, next) {
-  const url = getUrlFromRequest(req);
-  cache.set(url, res.locals.data);
-  return next()
+    if (undefined !== req.headers['access_token'] && null !== req.headers['access_token'] && undefined !== req.headers['token']&& null!==req.headers['token']) {
+        cache.set(req.headers['access_token'], req.headers['token']);
+              return next();
+
+        } else{
+          return res.status(401).send(new Error('Unauthorized'));
+        }
+
+
 }
 
 function get(req, res, next) {
-  const url = getUrlFromRequest(req);
-  const content = cache.get(url);
+   // cache.set('test',req.headers['host']);
+  const content = cache.get(req.headers['access_token']);
   if (content) {
-    return res.status(200).send(content)
+   return next();
   }
- //or by default \404 error
-  return next()
+  else if (content===undefined || null===content){
+      return res.status(401).send(new Error('Unauthorized'));
+  }
+
 }
 
 module.exports = { get, set };
