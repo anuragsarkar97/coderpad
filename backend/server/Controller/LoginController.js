@@ -36,9 +36,11 @@ exports.newlogin = function (req,res) {
   //  .substr(0,req.body.profile.email.length-2);
    logins.save(function (err) {
             if(err){
+
                 res.json(err);
             }
             res.json({
+                status:"200 Ok",
                 message : "Login Successfull",
                 data: logins
             });

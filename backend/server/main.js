@@ -9,6 +9,7 @@ try {
     db();
 }
 catch (e) {
+    e.throw();
     console.log(e+"MONGO DB CONNECTION FAIL");
 }
 app.use(bodyParser.urlencoded({

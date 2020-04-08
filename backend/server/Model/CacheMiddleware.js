@@ -36,7 +36,7 @@ function del(req,res,next) {
 }
 function get(req, res, next) {
     debugger;
-  const content = cache.get(req.headers['access_token']);
+
   if (cache.has(req.headers['access_token'])) {
    return next();
   }
@@ -47,6 +47,6 @@ function get(req, res, next) {
 
 }
 
-module.exports = { get, set ,del};
+module.exports = { get, set};
 
 
