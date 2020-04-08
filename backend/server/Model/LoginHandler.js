@@ -9,10 +9,6 @@ const loginSchema= new mongoose.Schema({
         type: String,
         required:true,
     },
-    accessToken: {
-        type: String,
-        required:true,
-    },
     profile:{
        googleId:{
                  type: String,
@@ -40,11 +36,8 @@ const loginSchema= new mongoose.Schema({
         },
 
 
-    },
-    tokenId:{
-              type: String,
-              required:true,
     }
+
 
 });
 const Login= module.exports = mongoose.model('login',loginSchema,'loginData');

@@ -1,5 +1,5 @@
 Login = require('../Model/LoginHandler');
-
+const UsernameGenerator=require('username-generator');
 /*
 Get to be removed only for Testing
  */
@@ -25,15 +25,15 @@ POST
 exports.newlogin = function (req,res) {
     debugger;
     const logins= new Login();
-    logins.accessToken =  req.body.accessToken;
-    logins.tokenId = req.body.tokenId ;
-    logins.googleId = req.body.profile.googleId;
-    logins.imageUrl=req.body.profile.imageUrl;
-    logins.email=req.body.profile.email;
-    logins.name=req.body.profile.name;
-    logins.givenName= req.body.profile.givenName;
-    logins.familyName=req.body.profile.familyName;
-    logins.username=req.body.profile.email.substr(0,req.body.profile.email.length-2);
+    logins.username=UsernameGenerator.generateUsername();
+    logins.profile.googleId = req.body.profile.googleId;
+    logins.profile.imageUrl=req.body.profile.imageUrl;
+    logins.profile.email=req.body.profile.email;
+    logins.profile.name=req.body.profile.name;
+    logins.profile.givenName= req.body.profile.givenName;
+    logins.profile.familyName=req.body.profile.familyName;
+
+  //  .substr(0,req.body.profile.email.length-2);
    logins.save(function (err) {
             if(err){
                 res.json(err);

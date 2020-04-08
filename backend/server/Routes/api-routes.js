@@ -1,6 +1,4 @@
 let router = require('express').Router();
-const NodeCache = require( "node-cache" );
-const cache = new NodeCache({ stdTTL: 5 * 60 });
 const cacher= require('../Model/CacheMiddleware');
 const cors = require('cors');
 //ALL Controller Imports
@@ -19,8 +17,8 @@ router.get('/get', cors(), function (req, res) {
 //User Routes
 router.get('/global',cacher.set,cacher.get,userController.index);
 router.post('/new',userController.new);
-router.get('/alllogin',loginController.logindata);
-router.post('/login',loginController.newlogin);
+router.get('/alllogin',cacher.get,loginController.logindata);
+router.post('/login',cacher.set,cacher.get,loginController.newlogin);
 
 
 
