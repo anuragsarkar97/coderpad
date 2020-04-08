@@ -21,9 +21,7 @@ function set(req, res, next) {
              cache.set(req.headers['access_token'], req.headers['token'],15*60);
               return next();
         }
-
-
-        } else{
+    }   else{
           return res.status(401).send(new Error('Unauthorized'));
         }
 
@@ -32,6 +30,7 @@ function set(req, res, next) {
 function del(req,res,next) {
     if(undefined!==req.headers['access_token']){
         cache.del(req.headers['access_token']);
+        cache.flushAll();
         return next();
     }
 }

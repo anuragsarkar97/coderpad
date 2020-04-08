@@ -14,7 +14,7 @@ router.get('/get', cors(), function (req, res) {
 
     });
 });
-//User Routes
+//API Routes
 router.get('/global',cacher.set,cacher.get,userController.index);
 router.post('/new',userController.new);
 router.get('/alllogin',cacher.get,loginController.logindata);
