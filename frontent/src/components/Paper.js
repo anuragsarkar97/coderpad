@@ -14,13 +14,15 @@ import {
     notification
 } from 'antd';
 import {EditOutlined,QuestionOutlined } from '@ant-design/icons';
+import {withRouter} from 'react-router-dom';
 
 
-export default class Paper extends Component {
+class Paper extends Component {
 
 
     constructor(props) {
         super(props);
+        console.log("page :" ,this.props);
         this.state = {
             code: '// type your code...',
             visibleA: false,
@@ -42,11 +44,9 @@ export default class Paper extends Component {
     };
 
     showDrawerB = () => {
-        this.setState({
-            visibleB: true
-        });
+        this.props.history.push("/question/" + this.props.question.document_id);
     };
-    onCloseA = () => {
+    onCloseA = () => {  
         this.setState({
             visibleA: false
         });
@@ -110,8 +110,8 @@ export default class Paper extends Component {
                 <Card title={v.company_name}
                 // extra={<Icon type="message"  theme="outlined" />}
                 actions={[
-                    <QuestionOutlined key="question" onClick={this.showDrawerA} />,
-                    <EditOutlined key="solve" onClick={this.showDrawerB} />,
+                    // <QuestionOutlined key="question" onClick={this.showDrawerA} />,
+                    <EditOutlined key="solve" onClick={() => this.props.history.push("/" + this.props.question.document_id)} />,
                     <Rate key="rate" />,
                   ]}
                 style = {{
@@ -122,14 +122,14 @@ export default class Paper extends Component {
                         <p>
                             {v.question_base}
                         </p>
-                    <Drawer title = "Question Board"
+                    {/* <Drawer title = "Question Board"
                         placement = {this.state.placementA}
                         closable = {true}
                         onClose = {this.onCloseA}
                         visible = {this.state.visibleA}> 
                         {v.full_question} 
-                    </Drawer> 
-                    <Drawer 
+                    </Drawer>  */}
+                    {/* <Drawer 
                         title = "Coder Pad" 
                         width = {720} 
                         placement = {this.state.placementB} 
@@ -158,9 +158,11 @@ export default class Paper extends Component {
                                 options = {this.state.options}
                                 onChange = {this.onChange}
                                 editorDidMount = {this.editorDidMount} />  
-                        </Drawer> 
+                        </Drawer>  */}
                 </Card> 
             </div>
             )
         }
     }
+
+export default withRouter(Paper);

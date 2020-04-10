@@ -53,9 +53,12 @@ export default class Page extends Component {
               'access_token' : localStorage.getItem('token') 
             }
   };
-  fetch('http://localhost:3005/question', requestOptions)
-    .then((res) => {
-      this.setState({q : res.json});
+  fetch('http://192.168.0.103:3005/questions', requestOptions)
+  // fetch('http://localhost:3005/questions', requestOptions)
+    .then((res) => res.json())
+    .then(v => {
+      console.log(v);
+      this.setState({q : v.data})
     })
     .catch(() => {
       console.log("error");
