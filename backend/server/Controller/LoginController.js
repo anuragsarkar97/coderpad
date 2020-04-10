@@ -11,6 +11,7 @@ Login.get(function (err,logins) {
                 message: err,
             });
         }
+        console.log("login success");
         res.json({
             status:"success",
             message:"All Login Details ",
@@ -35,10 +36,12 @@ exports.newlogin = function (req,res) {
 
   //  .substr(0,req.body.profile.email.length-2);
    logins.save(function (err) {
+       // res.append('Access-Control-Allow-Origin', ['*']);
             if(err){
 
                 res.json(err);
             }
+            console.log("login successfull");
             res.json({
                 status:"200 Ok",
                 message : "Login Successfull",

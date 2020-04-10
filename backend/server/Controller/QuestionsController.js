@@ -11,6 +11,7 @@ exports.quesdata=function (req,res) {
                    message:err
                 });
             }
+            console.log("questions fetched",question);
             res.json({
             status:"success",
             message:"All Questions",
