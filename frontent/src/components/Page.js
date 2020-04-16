@@ -54,14 +54,13 @@ export default class Page extends Component {
             }
   };
   fetch('http://192.168.0.103:3005/questions', requestOptions)
-  // fetch('http://localhost:3005/questions', requestOptions)
     .then((res) => res.json())
     .then(v => {
       console.log(v);
       this.setState({q : v.data})
     })
     .catch(() => {
-      console.log("error");
+      this.props.history.push("/login");
     });
   }
 

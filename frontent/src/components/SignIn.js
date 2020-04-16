@@ -23,17 +23,14 @@ export default class SignIn extends Component {
       })
   };
   localStorage.setItem("profile-photo", response.profileObj.imageUrl);
-  // fetch('http://localhost:3005/login', requestOptions)
   fetch('http://192.168.0.103:3005/login', requestOptions)
     .then(() => {
-      console.log("success", response);
       localStorage.setItem("token", z);
       this.props.history.push("/home");
     })
     .catch(() => {
-      // console.log(error);
-      // this.props.history.push("/login");
-      this.props.history.push("/home");
+      this.props.history.push("/login");
+      // this.props.history.push("/home");
     });
   };
   onFailure = response => console.error("error", response);

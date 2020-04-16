@@ -15,12 +15,30 @@ export default class CodePage extends Component {
     this.state = {
       selectedLanguage: "python",
       code : '// type your code...',
-      showtestcase : false
+      showtestcase : false,
+      question : '# This is a header\n\nAnd this is a paragraph', 
+      tutorial : '# This is a header\n\nAnd this is a paragraph'
     };
   }
 
   componentDidMount() {
-    console.log(this.props.match.params.id);
+    let question_id = this.props.match.params.id;
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Credentials' : 'true',
+      'access_token' : localStorage.getItem('token') ,
+      }
+    };
+    fetch('http://192.168.0.103:3005/question/' + question_id, requestOptions)
+      .then((res) => res.json())
+      .then((v) => {
+        this.setState({question : v.full_question})
+      })
+      .catch(() => {
+        this.props.history.push("/login");
+      });
   }
 
   render() {
@@ -46,14 +64,12 @@ export default class CodePage extends Component {
       </Menu>
     );
 
-    const input = '# This is a header\n\nAnd this is a paragraph'
     let ts;
     if(this.state.showtestcase) {
       ts = <Card style={{ width: '20%', marginTop : '2%' }}>
         <p>Card content</p>
         <p>Card content</p>
         <p>Card content</p>
-        {/* <Card.Grid>Content</Card.Grid> */}
       </Card>
     }
 
@@ -62,7 +78,7 @@ export default class CodePage extends Component {
         <div style={{marginTop : '3%' ,marginLeft : '5%' , marginRight : '5%'}}>
         <Collapse defaultActiveKey={['1']} >
             <Panel header="Question" key="1">
-              <p><ReactMarkdown source={input} /></p>
+              <p><ReactMarkdown source={this.state.question} /></p>
             </Panel>
           </Collapse>
         <div className="monaco" style = {{marginTop : '2%', marginBottom : '2%' }}>
@@ -87,7 +103,7 @@ export default class CodePage extends Component {
         {ts}
         <Collapse style={{marginTop : '5%'}}>
             <Panel header="Theory" key="2">
-              <p><ReactMarkdown source={input} /></p>
+              <p><ReactMarkdown source={this.state.tutorial} /></p>
             </Panel>
           </Collapse>
       </div>  
