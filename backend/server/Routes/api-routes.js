@@ -1,11 +1,11 @@
 let router = require('express').Router();
-const cacher= require('../Model/CacheMiddleware');
+const auth= require('../Model/CacheMiddleware');
 const cors = require('cors');
 //ALL Controller Imports
 const userController = require('../Controller/UserController.js');
 const loginController = require('../Controller/LoginController');
 const questionsControlller = require('../Controller/QuestionsController');
-
+const ratingController = require('../Controller/RatingsController');
 router.get('/get', cors(), function (req, res) {
     console.log(req.body);
     res.json({
@@ -14,17 +14,15 @@ router.get('/get', cors(), function (req, res) {
 
     });
 });
-//API Testing Routes
-router.get('/global',cacher.set,cacher.get,userController.index);
-router.post('/new',cacher.get,userController.new);
 
 //Login API Routes
-router.post('/login',cacher.set,cacher.get,loginController.newlogin);
-router.get('/alllogin'  ,cacher.get,loginController.logindata);
+router.post('/login',loginController.logins);
+//Questions and Rating API Routes
+router.get('/questions',auth.validate,questionsControlller.quesdata);
+router.post('/new/question',auth.validate,questionsControlller.postques);
+router.get('/select/:question_difficulty',auth.validate,questionsControlller.tag);
+router.get('/question/:document_id',auth.validate,questionsControlller.quest);
+router.put('/edit/:document_id',auth.validate,questionsControlller.quesupdate);
+router.post('/question/rate',auth.validate,ratingController.giveRating);
 
-//Questions API Routes
-router.get('/questions',cacher.get,questionsControlller.quesdata);
-router.post('/new/question',cacher.get,questionsControlller.postques);
-router.get('/select/:question_difficulty',cacher.get,questionsControlller.tag);
-router.put('/edit/:document_id',cacher.get,questionsControlller.quesupdate);
 module.exports = router;

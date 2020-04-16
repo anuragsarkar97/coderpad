@@ -62,6 +62,20 @@ exports.tag=function(req,res){
 };
 
 /*
+Find by Question  Id
+ */
+
+exports.quest=function(req,res){
+
+    Questions.find({document_id : req.params.document_id},function (err,quesdata) {
+            if(err) {
+                res.send(err);
+            }
+            res.send(quesdata[0]);
+    });
+};
+
+/*
 UPDATE Questions based on document id
  */
 exports.quesupdate=function (res,req) {
@@ -82,7 +96,7 @@ exports.quesupdate=function (res,req) {
 
         res.json({
             status:"200 OK",
-            message:"User Info Updated",
+            message:"Question Info Updated",
         });
     });
 });
