@@ -16,9 +16,10 @@ router.get('/get', cors(), function (req, res) {
 });
 
 //Login API Routes
-router.post('/login',loginController.logins);
+router.post('/login',loginController.loginfunction);
+//router.put('/login',loginController.logins);
 //Questions and Rating API Routes
-router.get('/questions',auth.validate,questionsControlller.quesdata);
+router.get('/questions',auth.validate,questionsControlller.allques);
 router.post('/new/question',auth.validate,questionsControlller.postques);
 router.get('/select/:question_difficulty',auth.validate,questionsControlller.tag);
 router.get('/question/:document_id',auth.validate,questionsControlller.quest);
