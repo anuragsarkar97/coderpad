@@ -1,65 +1,34 @@
 Login = require('../Model/LoginHandler');
-const UsernameGenerator=require('username-generator');
-/*
-Get to be removed only for Testing
+const auth = require('../Model/CacheMiddleware');
+
+/**
+ * Upsert the Login data
+ * @param req
+ * @param res
+ * @param next
  */
-exports.logindata= function (req,res) {
-Login.get(function (err,logins) {
-        if (err) {
+exports.loginfunction = function (req, res, next) {
+    const query = req.body.googleId;
+    const access_token=req.headers['access_token'];
+    Login.findOne({googleId: query}, function (err, data) {
+        if (err) console.log(err);
+        if (data) {
+            console.log("User Already there");
             res.json({
-                status: "error",
-                message: err,
+                data:data
+            });
+            auth.updateToken(access_token,query);
+        } else {
+            let user = new Login(req.body);
+            user.save(function (err, data) {
+                if (err) console.log(err);
+                console.log("New user created");
+                res.json({
+                    data: data
+                });
+                auth.updateToken(access_token,query);
             });
         }
-        console.log("login success");
-        res.json({
-            status:"success",
-            message:"All Login Details ",
-            data:logins
-        });
-});
+    });
+
 };
-
-/*
-POST
- */
-exports.newlogin = function (req,res) {
-    debugger;
-    const logins= new Login();
-    logins.username=UsernameGenerator.generateUsername();
-    logins.profile.googleId = req.body.profile.googleId;
-    logins.profile.imageUrl=req.body.profile.imageUrl;
-    logins.profile.email=req.body.profile.email;
-    logins.profile.name=req.body.profile.name;
-    logins.profile.givenName= req.body.profile.givenName;
-    logins.profile.familyName=req.body.profile.familyName;
-
-  //  .substr(0,req.body.profile.email.length-2);
-   logins.save(function (err) {
-       // res.append('Access-Control-Allow-Origin', ['*']);
-            if(err){
-
-                res.json(err);
-            }
-            console.log("login successfull");
-            res.json({
-                status:"200 Ok",
-                message : "Login Successfull",
-                data: logins
-            });
-   });
-};
-/*
-findbyID
- */
-// exports.view=function(req,res){
-//     User.findById(req.params.accessTokens,function (err,user) {
-//             if(err) {
-//                 res.send(err);
-//             }
-//             res.json({
-//                 message:"User Data Loading..",
-//                 data:user
-//             });
-//     });
-// };

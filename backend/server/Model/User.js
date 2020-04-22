@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
     profile:{
         type: String,
 
+
     }
 });
 const User= module.exports = mongoose.model('user',userSchema,'userData');
