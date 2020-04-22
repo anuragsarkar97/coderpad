@@ -40,7 +40,7 @@ class Nav extends Component {
           <Col span={8}>
             <div style={{textAlign : 'left', marginLeft : '5%'}}>
             <Menu.Item key="mail" onClick={this.redirectHome}>
-            <CodeOutlined />
+            {/* <CodeOutlined /> */}
               Coder Pad
             </Menu.Item>
             </div>
