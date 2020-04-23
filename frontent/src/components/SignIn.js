@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {GoogleLogin} from 'react-google-login';
 import {Row, Col, Card, Button, Affix} from 'antd';
+import './signInStyles.css';
 //import Card from 'antd';
 import TopImage from './assets/undraw_programming_2svr.svg';
 import DsaImage from './assets/undraw_software_engineer_lvl5.svg';
@@ -73,9 +74,10 @@ export default class SignIn extends Component {
       //       Welcome to the competition !
       //    </div> */}
                 <Row>
-                    <Col span={24} style={{backgroundImage: 'linear-gradient(to right,#9147FF, #6042f5, #9147FF'}}>
+                    <Col span={24} style={{backgroundImage: 'linear-gradient(to right,#a680c2,#844db8, #6042f5, #844db8,#a680c2'}}>
                         <div class='introText' style={{
-                            fontFamily: 'Roboto',
+                            //fontFamily: 'Roboto',
+                            fontFamily:'Anton, sans-serif',
                             fontWeight: 'bold',
                             marginTop: '10%',
                             textAlign: 'center',
@@ -87,26 +89,27 @@ export default class SignIn extends Component {
                                 items={[' Data Structures & Algorithms', ' Web Development', ' Mobile App Development']}/>
                         </div>
                         <div class='summary' style={{
-                            fontFamily: 'Roboto', marginTop: '1%', textAlign: 'center', fontSize: '2vw'
+                            fontFamily: 'Raleway, sans-serif', marginTop: '1%', textAlign: 'center', fontSize: '2vw'
                             , color: 'white', fontWeight: '500'
                         }}>
-                            Coding is not difficult if taught in a fun manner !
+                            Let's explore these in-demand subjects together !
                         </div>
-                        <div className="xv" style={{textAlign: 'center'}}>
+                        <div className="xv" style={{textAlign: 'center',fontFamily:'Abel,sans-serif'}}>
                             <Button style={{
-                                backgroundColor: "blueviolet",
+                                backgroundColor: "white",
                                 marginTop: '2%',
                                 marginBottom: '5%',
-                                textAlign: 'bottom',
-                                color: "white",
+                                marginRight : '1%',
+                                textAlign: 'center',
+                                color: '#6042f5',
                                 fontSize: "100%",
-                                borderRadius: 50,
+                                borderRadius: 0,
                                 fontWeight: "bold",
                                 height: "-10vh",
                                 width: "13vh"
                             }}
                                     href="https://docs.google.com/forms/d/e/1FAIpQLSd1jaFmg5BDjixB8CEUCzt3WLUmJTZzg6kv3dRZ-ST-2pmaxw/viewform">
-                                Join us !
+                            Join us !
                             </Button>
                         </div>
                     </Col>
@@ -114,8 +117,8 @@ export default class SignIn extends Component {
                 <Row>
                     <Col span={24}>
                         <div class='courseTitle' style={{
-                            fontFamily: 'Roboto',
-                            fontWeight: 'bold',
+                            fontFamily: 'Raleway, sans-serif',
+                           // fontWeight: 'bold',
                             fontSize: '2vw',
                             marginTop: '1%',
                             marginBottom: '1%',
@@ -131,17 +134,17 @@ export default class SignIn extends Component {
                 <Row>
                     <Col span={6}>
                         <div class='dsaImage' style={{marginLeft: '10%', marginRight: '5%'}}>
-                            <Card style={{width: '100%', border: "2px solid #6042f5", marginBottom: '10px'}}>
+                            <Card style={{width: '100%', border: "0.1vw solid #5b2c8a", marginBottom: '10px',boxShadow:'0.4vw 0.4vw 0.4vw #5b2c8a'}}>
                                 < img src={DsaImage} height='70%' width='90%' class='center'/>
                                 <p class='dsaHeader' style={{
-                                    marginLeft: '10%', marginRight: '10%', fontFamily: 'Oswald, sans-serif;',
+                                    marginLeft: '10%', marginRight: '10%', fontFamily: 'Raleway, sans-serif',
                                     fontWeight: 'bold', fontSize: '2vw', marginTop: '10%', display: 'block'
                                 }}>
-                                    DS & ALGORITHMS
+                                    DS & ALGORITHMS 
                                 </p>
-                                <p class='dsaSummary' style={{fontSize: '1vw'}}>
+                                <p class='dsaSummary' style={{fontSize: '1.1vw',marginBottom:'1.7vw'}}>
                                     We'll cover the fundamentals topics like Arrays,Linked Lists, Stacks & Queues, Trees
-                                    & many more to skyrocket your chances of getting desriable job interviews.
+                                    & many more to skyrocket your chances of cracking interviews of your dream companies.
                                 </p>
                             </Card>
                         </div>
@@ -150,46 +153,46 @@ export default class SignIn extends Component {
                     <Col span={6}>
 
                         <div class='webDevImage' style={{marginLeft: '5%', marginRight: '5%'}}>
-                            <Card style={{width: '100%', border: "2px solid #6042f5", marginBottom: '10px'}}>
+                            <Card style={{width: '100%', border: "0.1vw solid #5b2c8a", marginBottom: '10px',boxShadow:'0.4vw 0.4vw 0.4vw #5b2c8a'}}>
                                 <img src={WebDevImage} height='60%' width='90%' class='center'/>
                                 <p class='webDevHeader' style={{
-                                    marginLeft: '10%', marginRight: '10%', fontFamily: 'Oswald, sans-serif;',
+                                    marginLeft: '10%', marginRight: '10%', fontFamily: 'Raleway, sans-serif',
                                     fontWeight: 'bold', fontSize: '2vw', marginTop: '10%', display: 'block'
                                 }}>
                                     WEB DEVELOPMENT
                                 </p>
-                                <p class='webDevSummary' style={{fontSize: '1vw'}}>
+                                <p class='webDevSummary' style={{fontSize: '1.1vw', marginBottom:'2.7vw'}}>
                                     Learn about full stack development to develop both client and server software. Deploy
-                                    the project and make sure to keep every part of the system running smoothly.
+                                    your webapp  and learn how to maintain scalability & performance.
                                 </p>
                             </Card>
                         </div>
                     </Col>
                     <Col span={6}>
                         <div class='mobileAppImage' style={{marginLeft: '5%', marginRight: '5%'}}>
-                            <Card style={{width: '100%', border: "2px solid #6042f5", marginBottom: '10px'}}>
+                            <Card style={{width: '100%', border: "0.1vw solid #5b2c8a", marginBottom: '10px',boxShadow:'0.4vw 0.4vw 0.4vw #5b2c8a'}}>
                                 <img src={MobileAppImage} height='60%' width='90%'/>
                                 <p class='appDevHeader' style={{
-                                    marginLeft: '10%', marginRight: '10%', fontFamily: 'Oswald, sans-serif;',
+                                    marginLeft: '10%', marginRight: '10%', fontFamily: 'Raleway, sans-serif',
                                     fontWeight: 'bold', fontSize: '2vw', marginTop: '13%', display: 'block'
                                 }}>
                                     MOBILE APP DEVELOPMENT
                                 </p>
-                                <p class='appDevSummary' style={{fontSize: '1vw'}}>
-                                    Learn to develop mobile applications which gives you control over both the phone’s
-                                    controls and the devices they interface with. Deploy on PlayStore and brag about it :)
+                                <p class='appDevSummary' style={{fontSize: '1.1vw'}}>
+                                    Learn to develop cool mobile applications which gives you control over both the phone’s
+                                    controls and the devices they interface with. Deploy on PlayStore/AppStore and brag about it.
                                 </p>
                             </Card>
                         </div>
                     </Col>
                     <Col span={6}>
                         <div class='mlImage' style={{marginLeft: '5%', marginRight: '10%'}}>
-                            <Card style={{width: '100%', border: "2px solid #6042f5", marginBottom: '10px'}}>
+                            <Card style={{width: '100%', border: "0.1vw solid #5b2c8a", marginBottom: '10px',boxShadow:'0.4vw 0.4vw 0.4vw #5b2c8a'}}>
                                 <img src={MLImage} height='40%' width='90%'/>
                                 <p class='mlHeader' style={{
                                     marginLeft: '10%',
                                     marginRight: '10%',
-                                    fontFamily: 'Oswald, sans-serif;',
+                                    fontFamily: 'Raleway, sans-serif',
                                     fontWeight: 'bold',
                                     fontSize: '2vw',
                                     marginTop: '10%',
@@ -198,9 +201,9 @@ export default class SignIn extends Component {
                                 }}>
                                     MACHINE LEARNING
                                 </p>
-                                <p class='mlSummary' style={{fontSize: '1vw'}}>
-                                    Machine Learning is a kind of AI that enables computers to think and
-                                    learn on their own. Learn to make your computer think and optimize itself on its own
+                                <p class='mlSummary' style={{fontSize: '1.1vw', marginBottom:'1.4vw'}}>
+                                    Machine Learning is the buzzword. But seriously, how well do you know about the ins & 
+                                    outs of this topic ? We got you covered. Learn how the exisiting algorithms actually work.
                                 </p>
                             </Card>
                         </div>
@@ -209,7 +212,7 @@ export default class SignIn extends Component {
                 <Row>
                     <Col span={24}>
                         <div class='instructorsHeader' style={{
-                            fontFamily: 'Manrope, sans-serif;',
+                            fontFamily: 'Raleway, sans-serif',
                             textAlign: 'center', color: '#646965', fontSize: '2vw', marginTop: '4%'
                         }}>
                             Experienced Instructors from
@@ -234,7 +237,7 @@ export default class SignIn extends Component {
                             <img src={AmazonLogo} width='50%' height='50%'>
                             </img>
                         </div>
-                        <div class='FedexLogo' style={{marginLeft: '44%', marginTop: "18%"}}>
+                        <div class='FedexLogo' style={{marginLeft: '42%', marginTop: "18%"}}>
                             <img src={FedexLogo} width='30%' height='30%'>
                             </img>
                         </div>
@@ -244,7 +247,7 @@ export default class SignIn extends Component {
                             <img src={OyoLogo} width='40%' height='40%'>
                             </img>
                         </div>
-                        <div class='AppleLogo' style={{marginLeft: '8%', marginRight: '15%', marginTop: '15%'}}>
+                        <div class='AppleLogo' style={{marginLeft: '6%', marginRight: '15%', marginTop: '15%'}}>
                             <img src={AppleLogo} width='15%' height='15%'>
                             </img>
                         </div>
@@ -257,15 +260,15 @@ export default class SignIn extends Component {
                             marginTop: '5%'
                         }}>
                             <div class='introText' style={{
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Raleway, sans-serif',
                                 fontWeight: 'light',
                                 marginTop: '1%',
-                                marginLeft: '35%',
+                                marginLeft: '31%',
                                 fontSize: '1vw',
                                 color: 'white',
                             }}><p style={{textAlign: 'left'}}>
-                                Contact Us: code.o.meter@gmail.com |
-                                All rights Reserved to N2.tech @2020
+                                Contact Us:  code.o.meter@gmail.com &nbsp; &nbsp;|  
+                                &nbsp; &nbsp;All rights Reserved to N2.tech @2020
                             </p>
                             </div>
                         </Col>
