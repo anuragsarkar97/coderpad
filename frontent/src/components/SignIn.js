@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {GoogleLogin} from 'react-google-login';
-import {Row, Col, Card, Button} from 'antd';
+import {Row, Col, Card, Button, Affix} from 'antd';
 //import Card from 'antd';
 import TopImage from './assets/undraw_programming_2svr.svg';
 import DsaImage from './assets/undraw_software_engineer_lvl5.svg';
@@ -17,6 +17,7 @@ import FedexLogo from './assets/fedxsvglogo.svg'
 import ReactRotatingText from 'react-rotating-text'
 import fblog from './assets/fblogo.svg'
 import instalogo from './assets/instagram-2016.svg'
+import Footer from 'rc-footer';
 export default class SignIn extends Component {
 
     constructor(props) {
@@ -98,11 +99,11 @@ export default class SignIn extends Component {
                                 marginBottom: '5%',
                                 textAlign: 'bottom',
                                 color: "white",
-                                fontSize:"70%",
+                                fontSize: "100%",
                                 borderRadius: 50,
                                 fontWeight: "bold",
                                 height: "-10vh",
-                                width:"8vh"
+                                width: "13vh"
                             }}
                                     href="https://docs.google.com/forms/d/e/1FAIpQLSd1jaFmg5BDjixB8CEUCzt3WLUmJTZzg6kv3dRZ-ST-2pmaxw/viewform">
                                 Join us !
@@ -138,7 +139,7 @@ export default class SignIn extends Component {
                                 }}>
                                     DS & ALGORITHMS
                                 </p>
-                                <p class='dsaSummary' style={{fontSize:'1vw'}}>
+                                <p class='dsaSummary' style={{fontSize: '1vw'}}>
                                     We'll cover the fundamentals topics like Arrays,Linked Lists, Stacks & Queues, Trees
                                     & many more to skyrocket your chances of getting desriable job interviews.
                                 </p>
@@ -157,9 +158,9 @@ export default class SignIn extends Component {
                                 }}>
                                     WEB DEVELOPMENT
                                 </p>
-                                <p class='webDevSummary' style={{fontSize:'1vw'}}>
-                                    A long, long, long paragraph about all the ins and outs of Full Stack Engineering. A
-                                    long, long, long paragraph about all the ins and outs of Full Stack Engineering.
+                                <p class='webDevSummary' style={{fontSize: '1vw'}}>
+                                    Learn about full stack development to develop both client and server software. Deploy
+                                    the project and make sure to keep every part of the system running smoothly.
                                 </p>
                             </Card>
                         </div>
@@ -174,9 +175,9 @@ export default class SignIn extends Component {
                                 }}>
                                     MOBILE APP DEVELOPMENT
                                 </p>
-                                <p class='appDevSummary' style={{fontSize:'1vw'}}>
-                                    A long, long, long paragraph about all the ins and outs of Mobile App Engineering.
-                                    A long, long, long paragraph about all the ins and outs of Mobile App Engineering.
+                                <p class='appDevSummary' style={{fontSize: '1vw'}}>
+                                    Learn to develop mobile applications which gives you control over both the phone’s
+                                    controls and the devices they interface with. Deploy on PlayStore and brag about it :)
                                 </p>
                             </Card>
                         </div>
@@ -197,9 +198,9 @@ export default class SignIn extends Component {
                                 }}>
                                     MACHINE LEARNING
                                 </p>
-                                <p class='mlSummary' style={{fontSize:'1vw'}}>
-                                    A long, long, long paragraph about all the ins and outs of Machine Learning. A long,
-                                    long, long paragraph about all the ins and outs of Machine Learning.
+                                <p class='mlSummary' style={{fontSize: '1vw'}}>
+                                    Machine Learning is a kind of AI that enables computers to think and
+                                    learn on their own. Learn to make your computer think and optimize itself on its own
                                 </p>
                             </Card>
                         </div>
@@ -249,25 +250,28 @@ export default class SignIn extends Component {
                         </div>
                     </Col>
                 </Row>
-                <Row>
-                    <Col span={24} style={{
-                        backgroundImage: 'linear-gradient(to right,#9147FF, #6042f5, #9147FF',
-                        marginTop: '5%'
-                    }}>
-                        <div class='introText' style={{
-                            fontFamily: 'Roboto',
-                            fontWeight:'light',
-                            marginTop: '1%',
-                            marginLeft: '35%',
-                            fontSize: '1vw',
-                            color: 'white'
-                        }}><p style={{textAlign: 'left'}}>
-                                Contact Us:  code.o.meter@gmail.com  |
-                             All rights Reserved to N2.tech @2020
-                        </p>
-                        </div>
-                    </Col>
-                </Row>
+           <Footer/>
+                    <Row>
+                        <Col span={24} style={{
+                            backgroundImage: 'linear-gradient(to right,#9147FF, #6042f5, #9147FF',
+                            marginTop: '5%'
+                        }}>
+                            <div class='introText' style={{
+                                fontFamily: 'Roboto',
+                                fontWeight: 'light',
+                                marginTop: '1%',
+                                marginLeft: '35%',
+                                fontSize: '1vw',
+                                color: 'white',
+                            }}><p style={{textAlign: 'left'}}>
+                                Contact Us: code.o.meter@gmail.com |
+                                All rights Reserved to N2.tech @2020
+                            </p>
+                            </div>
+                        </Col>
+                    </Row>
+    <Footer/>
+
             </div>
 
         )

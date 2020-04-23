@@ -10,6 +10,7 @@
     "history": "^4.10.1",
     "monaco-editor": "^0.20.0",
     "prismjs": "^1.20.0",
+    "rc-footer": "^0.6.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-google-login": "^5.1.2",
@@ -30,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy":"aws s3 sync build/ s3://nsquare --acl public-read"
+    "deploy": "aws s3 sync build/ s3://nsquare --acl public-read"
   },
   "eslintConfig": {
     "extends": "react-app"
