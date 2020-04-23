@@ -13,10 +13,10 @@ import 'antd/dist/antd.css';
 function App() {
   return (
     <Router >
-      <Nav />
+      {/*<Nav />*/}
       <div>
-        <Route exact path={"/login"} component={withRouter(SignIn)} />
-        <Route exact path={["/home", "/"]} component={withRouter(Page)} />
+        <Route exact path={"/"} component={withRouter(SignIn)} />
+        <Route exact path={["/home"]} component={withRouter(Page)} />
         <Route exact path={"/profile"} component={withRouter(Profile)} />
         <Route exact path={"/question/:id"} component={withRouter(CodePage)} />
         {/* <Route exact path='*' component={NotFound} /> */}
