@@ -78,8 +78,8 @@ export default class SignIn extends Component {
                     <Col span={24}
                          style={{backgroundImage: 'linear-gradient(to right,#a680c2,#844db8, #6042f5, #844db8,#a680c2'}}>
                         <div className="logo"
-                             style={{maxWidth: "1%", maxHeight: '1%', marginLeft: '41%', marginTop: '1%', position:'relative'}}>
-                            <img src={logo}/>
+                             style={{maxHeight:'100%',marginLeft: '33vw', marginTop: '1vw', marginBottom:'-7vw', position:'center'}}>
+                            <img src={logo} style={{height:'20vw', width:'30vw'}}/>
                         </div>
                         <br/>
                         <br/><br/>
@@ -91,11 +91,11 @@ export default class SignIn extends Component {
                         <div class='introText' style={{
                             //fontFamily: 'Roboto',
                             fontFamily: 'Anton, sans-serif',
-                            fontWeight: 'bold',
-                            marginTop: '10%',
+                           // fontWeight: 'bold',
+                            marginTop: '1%',
                             textAlign: 'center',
                             fontSize: '3vw',
-                            color: 'white'
+                            color: 'white',
                         }}>
                             Learn
                             <ReactRotatingText
